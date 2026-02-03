@@ -1,0 +1,186 @@
+//1a
+import numpy as np
+arr=np.array([[1,2,3],[4,5,6]])
+print("Array type:",type(arr)) #type of numpy object
+print("Dimension",arr.ndim) #display the dimensions
+print("Shape of array",arr.shape) #returns the no.of rows and cols
+print("Array Size",arr.size) #returns the total no.of values
+print("type of elements in the array", arr.dtype) #returns the type of the elements
+
+//1b
+import pandas as pd
+data=pd.DataFrame({"x1":["y","x","y","x","x","y"],
+"x2":range(16,22),
+"x3":range(1,7),
+"x4":["a","b","c","d","e","f"],
+"x5":range(30,24,-1)})
+print(data)
+
+s1 = pd.Series([1,3,4,5,6,2,9])
+s2 = pd.Series([1.1,3.5,4.7,5.8,2.9,9.3])
+s3 = pd.Series(['a','b','c','d','e'])
+
+Data = {'first':s1,'second':s2,'third':s3}
+dfseries = pd.DataFrame(Data)
+print(dfseries)
+
+//1c
+from scipy import special
+a=special.exp10(3)
+print(a)
+
+b=special.exp2(3)
+print(b)
+
+c=special.sindg(90)
+print(c)
+
+d=special.cosdg(45)
+print(d)
+
+e=special.tandg(90)
+print(e)
+
+//1d
+import statsmodels.api as sm
+import numpy as np
+
+X = np.array([1, 2, 3, 4, 5]) # Independent variable (X)
+y = np.array([1.2, 1.9, 3.2, 3.8, 5.1]) #Dependent variable (y)
+
+X = sm.add_constant(X) # Adding constant
+model = sm.OLS(y, X) # Ordinary Least Squares (OLS) regression
+results = model.fit()
+
+print(results.summary()) # Summary of the regression results
+predicted = results.predict(X) # Predicted values
+print("\nPredicted values:", predicted)
+
+//2a
+import numpy as np
+
+# Create a sample NumPy array
+array = np.array([[1, 2, 3], [4, 5, 6]])
+
+# Display the NumPy array
+print("Array:")
+print(array)
+
+# Basic characteristics of the NumPy array
+print("\nArray Characteristics:")
+print(f"Shape: {array.shape}") # Shape of the array
+print(f"Size: {array.size}") # Total number of elements in the array
+print(f"Dimensions: {array.ndim}") # Number of dimensions
+print(f"Data Type: {array.dtype}") # Data type of elements
+print(f"Item Size: {array.itemsize} bytes") # Memory size of one array element
+print(f"Total Memory: {array.nbytes} bytes") # Total memory consumed by the array
+
+//2b
+import numpy as np
+
+# 1. Creating a numpy array from a Python list
+list_array = np.array([1.5, 2.5, 3.5], dtype=float)
+print("Numpy Array from List (float type):", list_array)
+
+# 2. Creating a numpy array from a Python tuple
+tuple_array = np.array((1, 2, 3), dtype=int)
+print("Numpy Array from Tuple (int type):", tuple_array)
+
+# 3. Creating a numpy array with all zeros
+zeros_array = np.zeros((3, 3), dtype=float)
+print("Numpy Array of Zeros (3x3):\n", zeros_array)
+
+# 4. Creating a numpy array with complex numbers
+complex_array = np.array([1 + 2j, 3 + 4j, 5 + 6j], dtype=complex)
+print("Numpy Array with Complex Numbers:", complex_array)
+
+# 5. Creating a numpy array with random numbers
+random_array = np.random.random((2, 3))
+print("Numpy Array with Random Numbers (2x3):\n", random_array)
+
+# 6. Creating a sequence of integers using np.arange()
+arange_array = np.arange(10, 21, 2) # Start from 10, end before 21, step 2
+print("Numpy Array with arange():", arange_array)
+
+# 7. Creating a sequence of evenly spaced numbers using np.linspace()
+linspace_array = np.linspace(0, 1, 5) # 5 evenly spaced numbers between 0 and 1
+print("Numpy Array with linspace():", linspace_array)
+
+# 8. Reshaping a numpy array
+reshaped_array = np.arange(1, 13).reshape(3, 4) # 3 rows, 4 columns
+print("Reshaped Numpy Array (3x4):\n", reshaped_array)
+
+# 9. Flattening a numpy array
+flattened_array = reshaped_array.flatten()
+print("Flattened Numpy Array:", flattened_array)
+
+//2c
+import numpy as np
+
+# Define two lists
+list1 = [1, 2, 3, 4]
+list2 = [5, 6, 7, 8]
+
+# Convert lists to NumPy arrays
+array1 = np.array(list1)
+array2 = np.array(list2)
+
+# Perform operations
+addition = array1 + array2
+subtraction = array1 - array2
+multiplication = array1 * array2
+division = array1 / array2
+
+# Display results
+print("Addition:", addition)
+print("Subtraction:", subtraction)
+print("Multiplication:", multiplication)
+print("Division:", division)
+
+//2d
+import numpy as np
+
+# 1. Define a 1D array
+array_1d = np.array([23, 1, 45, 34, 7, 15, 92, 5])
+print("Original 1D Array:", array_1d)
+
+# Sort the 1D array
+sorted_1d = np.sort(array_1d)
+print("Sorted 1D Array:", sorted_1d)
+
+# 2. Define a 2D array
+array_2d = np.array([[34, 23, 5], [12, 92, 7], [45, 1, 15]])
+print("\nOriginal 2D Array:\n", array_2d)
+
+# Sort the 2D array along rows
+sorted_2d_row = np.sort(array_2d, axis=1)
+print("\n2D Array Sorted Along Rows:\n", sorted_2d_row)
+
+# Sort the 2D array along columns
+sorted_2d_col = np.sort(array_2d, axis=0)
+print("\n2D Array Sorted Along Columns:\n", sorted_2d_col)
+
+# 3. Custom sorting for structured array
+data = np.array(
+ [
+ (3, "apple"),
+ (1, "banana"),
+ (2, "cherry"),
+ ],
+dtype=[("id", int), ("name", "U10")],
+)
+
+# Sort by 'id'
+sorted_by_id = np.sort(data, order="id")
+print("\nStructured Array Sorted by 'id':\n", sorted_by_id)
+
+# Sort by 'name'
+sorted_by_name = np.sort(data, order="name")
+print("\nStructured Array Sorted by 'name':\n", sorted_by_name)
+
+# 4. Demonstrating argsort
+print("\nOriginal 1D Array for argsort:", array_1d)
+indices = np.argsort(array_1d)
+print("Indices of Sorted Array:", indices)
+sorted_using_indices = array_1d[indices]
+print("Array Sorted Using Indices:", sorted_using_indices)
